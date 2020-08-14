@@ -1,3 +1,4 @@
+/* Box sizing rules */
 *,
 *::before,
 *::after {
@@ -17,7 +18,7 @@
   --clr-primary-400: #386fa4;
   --clr-primary-500: #133c55;
 
-  --clr-accent: #68271e;
+  --clr-accent: #184444;
 
   --clr-light: #fff;
   --clr-dark: #000;
@@ -27,6 +28,105 @@
     var(--clr-primary-200),
     var(--clr-primary-300)
   );
+}
+
+/* Remove default padding */
+ul[class],
+ol[class] {
+  padding: 0;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul[class],
+ol[class],
+figure,
+blockquote {
+  margin: 0;
+}
+
+/* Set core root defaults */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.6;
+}
+
+/* Remove list styles on ul, ol elements with a class attribute */
+ul[class],
+ol[class] {
+  list-style: none;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Natural flow and rhythm in articles by default */
+section > * + * {
+  margin-top: 1em;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+:focus {
+  outline: 2px solid var(--clr-accent);
+  outline-offset: 2px;
+}
+
+html {
+  scrollbar-color: var(--clr-primary-400) white;
+  /* scrollbar-width: thin; */
+  /* width: 100vw; */
+}
+
+::-webkit-scrollbar {
+  width: 1em;
+  background: transparent;
+  border-left: 1px solid var(--clr-primary-200);
+}
+
+::-webkit-scrollbar-thumb {
+  background-image: linear-gradient(
+    var(--clr-primary-300),
+    var(--clr-primary-400)
+  );
+  border-radius: 100vw;
+}
+
+/* Remove all animations and transitions for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 header {
@@ -41,13 +141,13 @@ header {
 html {
   font-size: 1.25rem;
   font-size: clamp(1rem, 5vw, 1.5rem);
-  scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
   font-family: var(--ff-body);
   line-height: 1.6;
+  width: 100vw;
   overflow-x: hidden;
 }
 
@@ -59,10 +159,6 @@ body {
   position: absolute;
   white-space: nowrap;
   width: 1px;
-}
-
-svg {
-  display: none;
 }
 
 h1,
@@ -111,9 +207,15 @@ a:focus::after {
   transform: scaleY(3);
 }
 
+section {
+  margin-bottom: 2em;
+}
+
 .container {
+  padding: 1rem;
   max-width: 55ch;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 h1 {
@@ -147,9 +249,13 @@ h1 + h2 {
 
 header {
   text-align: center;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
+}
+
+header > .container > * + * {
+  margin-top: 2rem;
 }
 
 header a {
@@ -164,9 +270,15 @@ nav {
   margin: 0 0 2em 0;
   border-top: var(--border) solid var(--clr-primary-100);
   border-bottom: var(--border) solid var(--clr-primary-100);
-  position: sticky;
-  z-index: 100;
-  top: calc(var(--border) * -1);
+}
+
+@media (min-width: 37em) {
+  nav {
+    position: sticky;
+    z-index: 100;
+    top: calc(var(--border) * -1);
+    bottom: calc(var(--border) * -1);
+  }
 }
 
 nav ul {
@@ -184,6 +296,31 @@ nav a {
 nav a:hover,
 nav a:focus {
   opacity: 0.99;
+}
+
+.link-github {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  background: var(--clr-accent);
+  padding: 0.5em 1.25em;
+  /* line-height: 1; */
+}
+
+.link-github span {
+  display: flex;
+  width: 1em;
+}
+
+.link-github svg {
+  width: 1em;
+  fill: #ffe600;
+}
+
+.link-github:hover,
+.link-github:focus {
+  background: var(--clr-light);
+  color: var(--clr-accent);
 }
 
 #about ul {
