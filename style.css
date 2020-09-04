@@ -16,7 +16,7 @@
   --clr-primary-200: #84d2f6;
   --clr-primary-300: #59a5d8;
   --clr-primary-400: #386fa4;
-  --clr-primary-500: #133c55;
+  --clr-primary-500: #3d484e;
 
   --clr-accent: #184444;
 
@@ -107,8 +107,8 @@ html {
 
 ::-webkit-scrollbar {
   width: 1em;
-  background: transparent;
-  border-left: 1px solid var(--clr-primary-200);
+  background: var(--clr-primary-200);
+  /* border-left: 1px solid var(--clr-primary-200); */
 }
 
 ::-webkit-scrollbar-thumb {
@@ -141,6 +141,8 @@ header {
 html {
   font-size: 1.25rem;
   font-size: clamp(1rem, 5vw, 1.5rem);
+  scroll-padding-top: 7rem;
+  overflow-x: hidden;
 }
 
 body {
@@ -148,7 +150,6 @@ body {
   font-family: var(--ff-body);
   line-height: 1.6;
   width: 100vw;
-  overflow-x: hidden;
 }
 
 .skip-link:not(:focus):not(:active) {
@@ -213,7 +214,7 @@ section {
 
 .container {
   padding: 1rem;
-  max-width: 55ch;
+  max-width: 75ch;
   margin-left: auto;
   margin-right: auto;
 }
@@ -245,6 +246,16 @@ h1 + h2 {
   font-size: clamp(2rem, 20vw, 2.5rem);
   line-height: 1;
   color: var(--clr-accent);
+}
+
+article h2 {
+  font-size: 2rem;
+  line-height: 1;
+  background: var(--clr-primary-400);
+  color: var(--clr-light);
+  align-self: start;
+  padding: 0.25em;
+  border-radius: 0.25em;
 }
 
 header {
@@ -293,9 +304,14 @@ nav a {
   color: var(--clr-light);
 }
 
+nav a::before,
+nav a::after {
+  display: none;
+}
+
 nav a:hover,
 nav a:focus {
-  opacity: 0.99;
+  color: var(--clr-primary-200);
 }
 
 .link-github {
@@ -329,7 +345,7 @@ nav a:focus {
   margin: 0;
   padding: 0;
   /* display: grid; */
-  columns: 7em 4;
+  columns: 8em 4;
   gap: var(--gap);
 }
 
@@ -340,9 +356,75 @@ nav a:focus {
   border: 1px solid var(--clr-primary-400);
   margin-bottom: var(--gap);
   border-radius: 0.2em;
+  break-inside: avoid;
+  /* overflow-wrap: break-word; */
 }
 
 #about section:nth-of-type(2) p:nth-of-type(2) {
   font-weight: var(--fw-bold);
   color: var(--clr-primary-500);
+}
+
+@media (min-width: 60em) {
+  body {
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    grid-template-areas:
+      "header header"
+      "nav nav"
+      "main aside-one"
+      "main aside-two"
+      "main ."
+      "footer footer";
+  }
+
+  header {
+    grid-area: header;
+  }
+  nav {
+    grid-area: nav;
+  }
+  main {
+    grid-area: main;
+  }
+
+  footer {
+    grid-area: footer;
+  }
+
+  aside:first-of-type {
+    grid-area: aside-one;
+  }
+  aside:last-of-type {
+    grid-area: aside-two;
+  }
+
+  .container {
+    padding-left: 0;
+    max-width: 70rem;
+    margin-left: 0;
+  }
+
+  article .container {
+    display: grid;
+    column-gap: 1em;
+    grid-template-columns: 7rem minmax(7em, 60ch);
+  }
+
+  article h2 {
+    grid-column: 1 / 2;
+    position: sticky;
+    top: 7rem;
+    font-size: 1rem;
+    border-radius: 0 0.25em 0.25em 0;
+    padding-left: 1em;
+  }
+
+  article *:not(h2) {
+    grid-column: 2 / 3;
+  }
+
+  article p:first-of-type {
+    margin: 0;
+  }
 }
