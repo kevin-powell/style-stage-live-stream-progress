@@ -263,6 +263,7 @@ header {
   min-height: 100vh;
   display: flex;
   align-items: center;
+  overflow: hidden;
 }
 
 header > .container > * + * {
@@ -288,7 +289,6 @@ nav {
     position: sticky;
     z-index: 100;
     top: calc(var(--border) * -1);
-    bottom: calc(var(--border) * -1);
   }
 }
 
@@ -405,6 +405,12 @@ nav a:focus {
     margin-left: 0;
   }
 
+  header .container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 75ch;
+  }
+
   article .container {
     display: grid;
     column-gap: 1em;
@@ -426,5 +432,108 @@ nav a:focus {
 
   article p:first-of-type {
     margin: 0;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  header {
+    animation: intro 2s forwards;
+  }
+
+  header .container h1 {
+    transform: translate(100vw, 0);
+  }
+
+  header .container h1 {
+    animation: 1s header-intro 1.2s forwards ease-in;
+    width: min-content;
+    transform-origin: top left;
+  }
+  header .container *:not(h1) {
+    transform: translate(0, 100vh);
+    animation: other-intro 1s forwards ease-in;
+  }
+
+  header .container h2 {
+    animation-delay: 1.5s;
+  }
+  header .container p {
+    animation-delay: 1.8s;
+  }
+  header .container a {
+    animation-delay: 2.1s;
+  }
+
+  @media (min-width: 62.5em) {
+    header .container h1 {
+      width: max-content;
+    }
+  }
+
+  @keyframes intro {
+    0% {
+      clip-path: polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%);
+    }
+
+    20% {
+      clip-path: polygon(45% 45%, 55% 45%, 55% 55%, 45% 55%);
+    }
+
+    40% {
+      clip-path: polygon(45% 45%, 55% 45%, 55% 55%, 45% 55%);
+      transform: rotate(2turn);
+    }
+    50% {
+      clip-path: polygon(47% 47%, 53% 47%, 53% 53%, 47% 53%);
+    }
+
+    70% {
+      clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 100%);
+      transform: rotate(2turn);
+    }
+    100% {
+      clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 100%);
+      transform: rotate(2turn);
+    }
+  }
+
+  @keyframes header-intro {
+    0% {
+      transform: translate(100vw, 0);
+    }
+    60% {
+      transform: translate(0, 0);
+      margin-left: 0;
+    }
+    62% {
+      transform: translate(0, 0) rotate(-8deg);
+      margin-left: 0;
+    }
+    74% {
+      transform: translate(0, -10%) rotate(-8deg);
+      margin-left: 0%;
+    }
+    74% {
+      transform: translate(0, -10%) rotate(-8deg);
+      margin-left: 0%;
+    }
+    100% {
+      transform: translate(-50%, 0) rotate(0);
+      margin-left: 50%;
+    }
+  }
+
+  @keyframes other-intro {
+    0% {
+      transform: translate(0, 100vh);
+    }
+    90% {
+      transform: translate(0, -30%);
+    }
+    96% {
+      transform: translate(0, 20%);
+    }
+    100% {
+      transform: translate(0, 0);
+    }
   }
 }
