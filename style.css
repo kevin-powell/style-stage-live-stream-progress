@@ -14,7 +14,9 @@ main:focus {
 :root {
   --ff-body: "PT Sans", sans-serif;
   --ff-heading: "Work Sans", cursive;
-  --ff-accent: "Bungee Shade", sans-serif;
+  /* --ff-accent: "Bungee Shade", sans-serif; */
+  --ff-accent: 'Yellowtail', cursive;
+;
 
   --fw-normal: 400;
   --fw-bold: 700;
@@ -184,36 +186,69 @@ h3 {
 
 h1 {
   color: transparent;
-  background-image: linear-gradient(-45deg, limegreen, var(--clr-accent));
+  /* color: red; */
+  -webkit-text-stroke: 1px white;
+  background-image: 
+
+    linear-gradient(
+      rgb(9, 112, 197) 0%,
+       #fff 65%, 
+      var(--clr-tertiary) 60%, 
+      #fff
+      );
   -webkit-background-clip: text;
   background-clip: text;
   padding: 0.05em;
-  font-size: clamp(5rem, 2rem + 30vw, 14rem);
+  font-size: clamp(3rem, 1rem + 10vw, 10rem);
   text-transform: uppercase;
   line-height: 0.6;
-  width: min-content;
-  margin: 1rem calc(-50vw + 50%);
-  /* opacity: 0.5; */
   text-align: center;
   position: relative;
-  text-shadow: 0 0.05em 0.05em rgba(0, 0, 0, 0.3);
-  letter-spacing: -0.075em;
+  z-index: 1;
+  letter-spacing: -0.025em;
+  margin-bottom: .25em;
+}
+header {position: relative; z-index: 0;}
+header::before,
+header::after {
+  --fill: red;
+  content: '';
+  background: url('data:image/svg+xml;utf8, <svg width="800" height="600" xmlns="http://www.w3.org/2000/svg"><path d="m0.75,596.12492l398.49999,-595.37492l398.49999,595.37492l-796.99997,0z" stroke-width="2" stroke="white" fill="none" /></svg>') no-repeat;
+  position: absolute;
+  background-size: contain;
+  background-position: center center;
+  display: block;
+  top: 5rem;
+  left: 50%;
+  bottom: 6rem;
+  width: min(70vw, 25rem);
+  z-index: -1;
+  /* mix-blend-mode: multiply; */
 }
 
-h1::after {
-  content: "";
-  display: block;
-  height: 4px;
-  background: currentColor;
-  width: 40%;
-  margin: 2rem auto;
-  opacity: 0.2;
+header::before {
+  transform: rotate(183deg) translateX(50%);
+  filter: drop-shadow(0 0 5px var(--clr-tertiary)); 
+
 }
+
+header::after {
+  transform: rotate(188deg) translateX(50%);
+  filter: drop-shadow(0 0 5px var(--clr-primary-100)); 
+}
+
+
 
 h1 + h2 {
   font-size: clamp(2rem, 20vw, 2.5rem);
   line-height: 1;
   color: var(--clr-light);
+  text-shadow: 0 0 .25em var(--clr-tertiary);
+  margin-top: 0;
+  margin-bottom: 3rem;
+  padding: 0 1em;
+  position: relative;
+  z-index: 10;
 }
 
 a:not(.link-github) {
@@ -263,9 +298,7 @@ header {
   overflow: hidden;
 }
 
-header > .container > * + * {
-  margin-top: 2rem;
-}
+
 
 header h2 {
   font-family: var(--ff-accent);
@@ -438,7 +471,7 @@ nav a:focus {
     margin: 0;
   }
 }
-@media (prefers-reduced-motion: no-preference) {
+/* @media (prefers-reduced-motion: no-preference) {
   header {
     animation: intro 2s forwards;
   }
@@ -449,7 +482,6 @@ nav a:focus {
 
   header .container h1 {
     animation: 1s header-intro 1.2s forwards ease-in, glow 5s alternate infinite;
-    width: min-content;
     transform-origin: top left;
   }
   header .container *:not(h1) {
@@ -465,13 +497,7 @@ nav a:focus {
   }
   header .container a {
     animation-delay: 2.1s;
-  }
-
-  @media (min-width: 62.5em) {
-    header .container h1 {
-      width: min-content;
-    }
-  }
+  } */
 
   @keyframes intro {
     0% {
