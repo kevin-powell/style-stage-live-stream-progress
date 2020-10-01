@@ -13,11 +13,9 @@ main:focus {
 
 :root {
   --ff-body: "PT Sans", sans-serif;
-  --ff-heading: "Work Sans", cursive;
+  --ff-heading: "Bebas Neue", cursive;
   /* --ff-accent: "Bungee Shade", sans-serif; */
-  --ff-accent: 'Yellowtail', cursive;
-;
-
+  --ff-accent: "Yellowtail", cursive;
   --fw-normal: 400;
   --fw-bold: 700;
 
@@ -32,12 +30,13 @@ main:focus {
   --clr-accent: #85ff9e;
 
   --clr-tertiary: #f148fb;
+  --clr-tertiary-500: #662269;
 
   --clr-light: #fff;
   --clr-dark: #000;
 
-  --clr-gradient: linear-gradient(
-    -225deg,
+  --clr-gradient: radial-gradient(
+    var(--clr-tertiary-500),
     var(--clr-primary-400),
     var(--clr-primary-500)
   );
@@ -187,63 +186,32 @@ h3 {
 h1 {
   color: transparent;
   /* color: red; */
-  -webkit-text-stroke: 1px white;
-  background-image: 
-
-    linear-gradient(
-      rgb(9, 112, 197) 0%,
-       #fff 65%, 
-      var(--clr-tertiary) 60%, 
-      #fff
-      );
+  /* -webkit-text-stroke: 1px white; */
+  background-image: linear-gradient(
+    rgb(9, 112, 197) 0%,
+    #fff 65%,
+    var(--clr-tertiary) 60%,
+    #fff
+  );
   -webkit-background-clip: text;
   background-clip: text;
-  padding: 0.05em;
-  font-size: clamp(3rem, 1rem + 10vw, 10rem);
+  background-size: 100% 100%;
+  padding: 0.2em 0 0.05em;
+  font-size: clamp(2rem, 1rem + 20vw, 10rem);
   text-transform: uppercase;
   line-height: 0.6;
   text-align: center;
   position: relative;
   z-index: 1;
-  letter-spacing: -0.025em;
-  margin-bottom: .25em;
+  margin-bottom: 1rem;
+  margin-top: auto;
 }
-header {position: relative; z-index: 0;}
-header::before,
-header::after {
-  --fill: red;
-  content: '';
-  background: url('data:image/svg+xml;utf8, <svg width="800" height="600" xmlns="http://www.w3.org/2000/svg"><path d="m0.75,596.12492l398.49999,-595.37492l398.49999,595.37492l-796.99997,0z" stroke-width="2" stroke="white" fill="none" /></svg>') no-repeat;
-  position: absolute;
-  background-size: contain;
-  background-position: center center;
-  display: block;
-  top: 5rem;
-  left: 50%;
-  bottom: 6rem;
-  width: min(70vw, 25rem);
-  z-index: -1;
-  /* mix-blend-mode: multiply; */
-}
-
-header::before {
-  transform: rotate(183deg) translateX(50%);
-  filter: drop-shadow(0 0 5px var(--clr-tertiary)); 
-
-}
-
-header::after {
-  transform: rotate(188deg) translateX(50%);
-  filter: drop-shadow(0 0 5px var(--clr-primary-100)); 
-}
-
-
 
 h1 + h2 {
   font-size: clamp(2rem, 20vw, 2.5rem);
   line-height: 1;
   color: var(--clr-light);
-  text-shadow: 0 0 .25em var(--clr-tertiary);
+  text-shadow: 0 0 0.25em var(--clr-tertiary);
   margin-top: 0;
   margin-bottom: 3rem;
   padding: 0 1em;
@@ -272,14 +240,14 @@ section {
   margin-bottom: 2em;
 }
 
-article h2 {
+article h2,
+article h3 {
   font-size: 2rem;
   line-height: 1;
-  background: var(--clr-primary-400);
-  color: var(--clr-light);
+  background: var(--clr-tertiary);
+  color: var(--clr-primary-500);
   align-self: start;
-  padding: 0.25em;
-  border-radius: 0.25em;
+  padding: 0.25em 0.25em 0.1em 0.25em;
 }
 
 .container {
@@ -291,22 +259,72 @@ article h2 {
 
 header {
   background-image: var(--clr-gradient);
+  background-position: 50% 60%;
+  background-size: 200% 200%;
   text-align: center;
   min-height: 100vh;
   display: flex;
   align-items: center;
   overflow: hidden;
+  animation: bg-animation ease-in-out 5000ms alternate infinite;
 }
 
+@keyframes bg-animation {
+  from {
+    /* background-position: 50% 60%; */
+    background-size: 100% 100%;
+  }
+  to {
+    /* background-position: 10% 10%; */
+    background-size: 200% 200%;
+  }
+}
 
+header {
+  position: relative;
+  z-index: 0;
+}
+
+header::before,
+header::after {
+  --fill: red;
+  content: "";
+  background: url('data:image/svg+xml;utf8, <svg width="800" height="600" xmlns="http://www.w3.org/2000/svg"><path d="m0.75,596.12492l398.49999,-595.37492l398.49999,595.37492l-796.99997,0z" stroke-width="2" stroke="white" fill="none" /></svg>')
+    no-repeat;
+  position: absolute;
+  background-size: contain;
+  background-position: center center;
+  display: block;
+  top: 2rem;
+  left: 50%;
+  bottom: 6rem;
+  width: min(70vw, 25rem);
+  z-index: -1;
+  /* mix-blend-mode: multiply; */
+}
+
+header::before {
+  transform: rotate(183deg) translateX(50%);
+  filter: drop-shadow(0 0 5px var(--clr-tertiary));
+}
+
+header::after {
+  transform: rotate(188deg) translateX(50%);
+  filter: drop-shadow(0 0 5px var(--clr-primary-100));
+}
 
 header h2 {
   font-family: var(--ff-accent);
 }
 
 header a {
-  color: var(--clr-light);
-  opacity: 0.8;
+  color: var(--clr-tertiary) !important;
+}
+
+header p {
+  /* align-self: flex-end; */
+  margin-top: auto;
+  margin-bottom: 0.5em;
 }
 
 nav {
@@ -352,8 +370,11 @@ nav a:focus {
   display: inline-flex;
   align-items: center;
   gap: 0.5em;
-  background: var(--clr-accent);
+  text-decoration: none;
+  background: var(--clr-tertiary);
+  color: white !important;
   padding: 0.5em 1.25em;
+  position: relative;
   /* line-height: 1; */
 }
 
@@ -364,13 +385,24 @@ nav a:focus {
 
 .link-github svg {
   width: 1em;
-  fill: #ffe600;
+  fill: white;
+  filter: drop-shadow(0 0 3px white);
 }
 
 .link-github:hover,
 .link-github:focus {
-  background: var(--clr-light);
+  background: var(--clr-primary-500);
   color: var(--clr-accent);
+}
+
+.link-github::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0px;
+  height: 0px;
+  box-shadow: 0 0 0.25em 0.25em white;
 }
 
 #about ul {
@@ -399,6 +431,13 @@ nav a:focus {
 #about section:nth-of-type(2) p:nth-of-type(2) {
   font-weight: var(--fw-bold);
   color: var(--clr-accent);
+}
+
+#contribute {
+  transform: rotate(-3deg);
+  margin-left: 2em;
+  border: 3px solid white;
+  box-shadow: 0 0 0.5em var(--clr-accent), inset 0 0 0.5em var(--clr-accent);
 }
 
 @media (min-width: 60em) {
@@ -445,7 +484,13 @@ nav a:focus {
   header .container {
     margin-left: auto;
     margin-right: auto;
+    padding-bottom: 4rem;
     max-width: 75ch;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 
   article > .container {
@@ -454,16 +499,16 @@ nav a:focus {
     grid-template-columns: 7rem minmax(7em, 60ch);
   }
 
-  article h2 {
+  article h2,
+  article h3 {
     grid-column: 1 / 2;
     position: sticky;
     top: 7rem;
-    font-size: 1rem;
-    border-radius: 0 0.25em 0.25em 0;
+    font-size: 1.25rem;
     padding-left: 1em;
   }
 
-  article *:not(h2) {
+  article *:not(h2):not(h3) {
     grid-column: 2 / 3;
   }
 
@@ -471,7 +516,7 @@ nav a:focus {
     margin: 0;
   }
 }
-/* @media (prefers-reduced-motion: no-preference) {
+@media (prefers-reduced-motion: no-preference) {
   header {
     animation: intro 2s forwards;
   }
@@ -497,7 +542,7 @@ nav a:focus {
   }
   header .container a {
     animation-delay: 2.1s;
-  } */
+  }
 
   @keyframes intro {
     0% {
@@ -532,23 +577,18 @@ nav a:focus {
     }
     60% {
       transform: translate(0, 0);
-      margin-left: 0;
     }
     62% {
       transform: translate(0, 0) rotate(-8deg);
-      margin-left: 0;
     }
     74% {
       transform: translate(0, -10%) rotate(-8deg);
-      margin-left: 0%;
     }
     74% {
       transform: translate(0, -10%) rotate(-8deg);
-      margin-left: 0%;
     }
     100% {
-      transform: translate(-50%, 0) rotate(0);
-      margin-left: 50%;
+      transform: translate(0, 0) rotate(0);
     }
   }
 
@@ -581,9 +621,25 @@ nav a:focus {
 }
 
 #styles,
+#files,
 .profile {
   max-width: max-content;
   margin: 0 auto;
+  font-size: 0.7rem;
+}
+
+#styles h2,
+#files h3,
+.profile h4 {
+  font-family: var(--ff-accent);
+  font-size: 1.5rem;
+  line-height: 1;
+  text-shadow: 0 0 0.5rem var(--clr-tertiary);
+}
+
+#styles h2,
+#files h3 {
+  text-shadow: 0 0 0.5rem var(--clr-light);
 }
 
 #styles {
@@ -668,4 +724,26 @@ footer:not(#files) {
 
 footer p {
   margin-top: 1em;
+}
+
+#guidelines {
+  transform: rotate(2deg);
+  margin-left: 2em;
+  border: 3px solid white;
+  box-shadow: 0 0 0.5em var(--clr-tertiary), inset 0 0 0.5em var(--clr-tertiary);
+}
+
+#guidelines h3 {
+  top: 8.75rem;
+  left: 1rem;
+  width: 60%;
+  margin-left: auto;
+  background: var(--clr-accent);
+  font-size: 1rem;
+  text-align: right;
+  transform: rotate(-10deg);
+}
+
+article:not(#about) {
+  width: 120%;
 }
