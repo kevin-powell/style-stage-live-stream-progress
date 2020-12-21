@@ -1,8 +1,57 @@
+@font-face {
+  font-family: "Bebas Neue";
+  font-style: normal;
+  font-weight: 400;
+  src: local(""),
+    url("../assets/bebas-neue-v2-latin-regular.woff2") format("woff2"),
+    url("../assets/bebas-neue-v2-latin-regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: "PT Sans";
+  font-style: normal;
+  font-weight: 400;
+  src: local(""),
+    url("../assets/pt-sans-v12-latin-regular.woff2") format("woff2"),
+    url("../assets/pt-sans-v12-latin-regular.woff") format("woff");
+}
+@font-face {
+  font-family: "PT Sans";
+  font-style: italic;
+  font-weight: 400;
+  src: local(""),
+    url("../assets/pt-sans-v12-latin-italic.woff2") format("woff2"),
+    url("../assets/pt-sans-v12-latin-italic.woff") format("woff");
+}
+
+@font-face {
+  font-family: "PT Sans";
+  font-style: normal;
+  font-weight: 700;
+  src: local(""), url("../assets/pt-sans-v12-latin-700.woff2") format("woff2"),
+    url("../assets/pt-sans-v12-latin-700.woff") format("woff");
+}
+@font-face {
+  font-family: "PT Sans";
+  font-style: italic;
+  font-weight: 700;
+  src: local(""),
+    url("../assets/pt-sans-v12-latin-700italic.woff2") format("woff2"),
+    url("../assets/pt-sans-v12-latin-700italic.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Yellowtail";
+  font-style: normal;
+  font-weight: 400;
+  src: local(""),
+    url("../assets/yellowtail-v11-latin-regular.woff2") format("woff2"),
+    url("../assets/yellowtail-v11-latin-regular.woff") format("woff");
+}
+
 main:focus {
   outline: 0;
 }
-
-/*#region reset  */
 
 /* Box sizing rules */
 *,
@@ -14,7 +63,6 @@ main:focus {
 :root {
   --ff-body: "PT Sans", sans-serif;
   --ff-heading: "Bebas Neue", cursive;
-  /* --ff-accent: "Bungee Shade", sans-serif; */
   --ff-accent: "Yellowtail", cursive;
   --fw-normal: 400;
   --fw-bold: 700;
@@ -26,7 +74,6 @@ main:focus {
   --clr-primary-500: #131b3a;
 
   --fs-base: 1rem;
-  /* 52ff75 */
   --clr-accent: #85ff9e;
 
   --clr-tertiary: #f148fb;
@@ -114,14 +161,11 @@ select {
 
 html {
   scrollbar-color: var(--clr-primary-400) white;
-  /* scrollbar-width: thin; */
-  /* width: 100vw; */
 }
 
 ::-webkit-scrollbar {
   width: 1em;
   background: var(--clr-primary-200);
-  /* border-left: 1px solid var(--clr-primary-200); */
 }
 
 ::-webkit-scrollbar-thumb {
@@ -142,8 +186,7 @@ html {
   }
 }
 
-/*#endregion  */
-
+/* Selection color */
 ::selection {
   color: var(--clr-dark);
   background: var(--clr-tertiary);
@@ -612,8 +655,6 @@ nav a:focus {
   background: var(--clr-tertiary);
   color: var(--clr-primary-500);
   transform: rotate(-4deg);
-
-  /* width: 15em; */
 }
 
 #files a:hover,
@@ -784,6 +825,7 @@ footer p {
   }
 }
 
+/* modifications for prefers-reduced-motion */
 @media (prefers-reduced-motion: no-preference) {
   header {
     animation: intro 2s forwards;
@@ -876,6 +918,7 @@ footer p {
   }
 }
 
+/* different color scheme for light mode */
 @media (prefers-color-scheme: light) {
   /* :root {
     --clr-dark: #fff;
