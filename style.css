@@ -1,37 +1,4 @@
-@font-face {
-  font-family: "Bebas Neue";
-  font-style: normal;
-  font-weight: 400;
-  src: local(""),
-    url("../assets/bebas-neue-v2-latin-regular.woff2") format("woff2"),
-    url("../assets/bebas-neue-v2-latin-regular.woff") format("woff");
-}
-
-@font-face {
-  font-family: "PT Sans";
-  font-style: normal;
-  font-weight: 400;
-  src: local(""),
-    url("../assets/pt-sans-v12-latin-regular.woff2") format("woff2"),
-    url("../assets/pt-sans-v12-latin-regular.woff") format("woff");
-}
-
-@font-face {
-  font-family: "PT Sans";
-  font-style: normal;
-  font-weight: 700;
-  src: local(""), url("../assets/pt-sans-v12-latin-700.woff2") format("woff2"),
-    url("../assets/pt-sans-v12-latin-700.woff") format("woff");
-}
-
-@font-face {
-  font-family: "Yellowtail";
-  font-style: normal;
-  font-weight: 400;
-  src: local(""),
-    url("../assets/yellowtail-v11-latin-regular.woff2") format("woff2"),
-    url("../assets/yellowtail-v11-latin-regular.woff") format("woff");
-}
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=PT+Sans:wght@400;700&family=Yellowtail&display=swap");
 
 main:focus {
   outline: 0;
