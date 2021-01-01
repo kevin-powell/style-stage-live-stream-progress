@@ -192,7 +192,8 @@ h3 {
 }
 
 h1 {
-  color: transparent;
+  color: #fff;
+  -webkit-text-fill-color: transparent;
   background-image: linear-gradient(
     rgb(9, 112, 197) 0%,
     #fff 65%,
@@ -610,8 +611,8 @@ nav a:focus {
 
 #files a:hover,
 #files a:focus {
-  color: var(--clr-accent);
-  text-decoration-color: var(--clr-accent);
+  /* color: white; */
+  text-decoration-color: var(--clr-light);
 }
 
 #guidelines {
@@ -660,6 +661,10 @@ footer p {
   margin: 3rem 0;
 }
 
+#sponsor-footer {
+  grid-area: sponsor;
+}
+
 /* media query */
 @media (min-width: 60em) {
   body {
@@ -672,7 +677,8 @@ footer p {
       "main aside-one ."
       "main aside-two ."
       "main . ."
-      "footer footer footer";
+      "footer footer footer"
+      "sponsor sponsor sponsor";
   }
 
   header {
@@ -866,62 +872,5 @@ footer p {
     100% {
       transform: translate(0, 0);
     }
-  }
-}
-
-/* different color scheme for light mode */
-@media (prefers-color-scheme: light) {
-  /* :root {
-    --clr-dark: #fff;
-    --clr-light: #000;
-  } */
-
-  body {
-    background: var(--clr-light);
-    color: var(--clr-primary-500);
-  }
-  a:not(.link-github) {
-    color: var(--clr-tertiary-500);
-    font-weight: var(--fw-bold);
-  }
-
-  a:hover,
-  a:focus {
-    color: var(--clr-tertiary);
-    text-decoration-color: var(--clr-tertiary);
-  }
-
-  nav a {
-    color: var(--clr-accent) !important;
-  }
-
-  header {
-    color: var(--clr-light);
-  }
-
-  .profile {
-    color: var(--clr-light);
-  }
-
-  .profile a {
-    color: var(--clr-accent);
-  }
-
-  #about section:nth-of-type(2) p:nth-of-type(2) {
-    font-weight: var(--fw-bold);
-    color: var(--clr-tertiary-500);
-  }
-
-  .page-footer {
-    color: var(--clr-light);
-  }
-
-  .page-footer a {
-    color: var(--clr-accent);
-  }
-
-  .page-footer p:first-of-type a {
-    display: block;
-    font-size: 1.5em;
   }
 }
