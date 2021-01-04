@@ -695,10 +695,10 @@ footer p {
     grid-area: footer;
   }
 
-  aside:first-of-type {
+  aside.profile {
     grid-area: aside-one;
   }
-  aside:nth-child(2) {
+  aside#styles {
     grid-area: aside-two;
   }
 
