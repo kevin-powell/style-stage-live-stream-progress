@@ -698,7 +698,7 @@ footer p {
   aside:first-of-type {
     grid-area: aside-one;
   }
-  aside:last-of-type {
+  aside:nth-child(2) {
     grid-area: aside-two;
   }
 
